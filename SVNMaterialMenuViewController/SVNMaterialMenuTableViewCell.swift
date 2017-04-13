@@ -37,8 +37,8 @@ open class SVNMaterialMenuTableViewCell: UITableViewCell {
         let card = UIView()
         card.layer.masksToBounds = false
         card.layer.cornerRadius = 2.0
-        card.layer.shadowOffset = CGSize(width: -1, height: 1)
-        card.layer.shadowOpacity = 0.2
+        card.layer.shadowOffset = CGSize(width: -2, height: 2)
+        card.layer.shadowOpacity = 0.5
         self.addSubview(card)
         return card
     }()
