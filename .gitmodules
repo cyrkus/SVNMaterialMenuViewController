@@ -1,0 +1,3 @@
+[submodule "Carthage/Checkouts/SVNTheme"]
+	path = Carthage/Checkouts/SVNTheme
+	url = https://github.com/sevenapps/SVNTheme.git
