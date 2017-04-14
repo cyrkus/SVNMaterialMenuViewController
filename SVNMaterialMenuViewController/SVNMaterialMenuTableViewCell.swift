@@ -11,6 +11,15 @@ import SVNTheme
 
 open class SVNMaterialMenuTableViewCell: UITableViewCell {
     
+//    override open var isHighlighted: Bool {
+//        get {
+//            return super.isHighlighted
+//        }
+//        set(newValue){
+//            super.isHighlighted = newValue
+//        }
+//    }
+//    
     class var reuseIdentifier: String {
         get {
             return "SVNMaterialMenuTableViewCell"
@@ -44,6 +53,8 @@ open class SVNMaterialMenuTableViewCell: UITableViewCell {
     }()
     
     open override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+//        self.isHighlighted = isSelected
         self.animate(selected)
     }
     
@@ -89,6 +100,7 @@ open class SVNMaterialMenuTableViewCell: UITableViewCell {
         self.addSubview(contentCard)
         self.contentCard.addSubview(icon)
         self.contentCard.addSubview(header)
+        self.selectionStyle = .none
         self.isHighlighted = false
     }
     
