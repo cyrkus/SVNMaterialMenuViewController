@@ -15,7 +15,7 @@ open class SVNMaterialMenuViewController: UITableViewController {
     
     public var dataSource: [SVNMaterialMenuCell]!
     
-    public var selectedItem: ((Int) -> Void)
+    public var selectedItem: ((Int) -> Void)?
     
     public init(theme: SVNTheme?,
                 dataSource:[SVNMaterialMenuCell]?,
@@ -24,7 +24,6 @@ open class SVNMaterialMenuViewController: UITableViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.theme = theme == nil ? SVNTheme_DefaultDark() : theme!
         self.dataSource = dataSource == nil ? self.setStockData() : dataSource!
-        self.menuDelegate = delegate
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -78,7 +77,7 @@ extension SVNMaterialMenuViewController {
     }
     
     open override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedItem(indexPath.row)
+        self.selectedItem?(indexPath.row)
     }
 }
 
