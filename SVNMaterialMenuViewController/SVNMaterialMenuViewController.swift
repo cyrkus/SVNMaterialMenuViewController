@@ -36,6 +36,12 @@ open class SVNMaterialMenuViewController: UITableViewController {
         self.stylizeView()
     }
     
+    open override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
+        self.tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     private func layoutView(){
         tableView.register(SVNMaterialMenuTableViewCell.self, forCellReuseIdentifier: SVNMaterialMenuTableViewCell.reuseIdentifier)
     }

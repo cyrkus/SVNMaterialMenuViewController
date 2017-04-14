@@ -43,6 +43,22 @@ open class SVNMaterialMenuTableViewCell: UITableViewCell {
         return card
     }()
     
+    open override func setSelected(_ selected: Bool, animated: Bool) {
+        self.animate(selected)
+    }
+    
+    private func animate(_ isSelected: Bool) {
+        CATransaction.begin()
+        let animation = CABasicAnimation(keyPath: "shadowOpacity")
+        animation.toValue = isSelected ? 0.0 : 0.5
+        animation.duration = 0.5
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        animation.fillMode = kCAFillModeBoth
+        animation.isRemovedOnCompletion = false
+        self.layer.add(animation, forKey: animation.keyPath!)
+        CATransaction.commit()
+    }
+    
     open override func layoutSubviews() {
         super.layoutSubviews()
         let contentHeight: CGFloat = self.frame.height - self.frame.size.height / 4
@@ -73,6 +89,7 @@ open class SVNMaterialMenuTableViewCell: UITableViewCell {
         self.addSubview(contentCard)
         self.contentCard.addSubview(icon)
         self.contentCard.addSubview(header)
+        self.isHighlighted = false
     }
     
     required public init?(coder aDecoder: NSCoder) {
