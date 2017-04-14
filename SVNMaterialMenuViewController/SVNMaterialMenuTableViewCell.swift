@@ -52,10 +52,14 @@ open class SVNMaterialMenuTableViewCell: UITableViewCell {
         return card
     }()
     
-    open override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-//        self.isHighlighted = isSelected
-        self.animate(selected)
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.animate(true)
+    }
+    
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        self.animate(false)
     }
     
     private func animate(_ isSelected: Bool) {
@@ -119,6 +123,5 @@ open class SVNMaterialMenuTableViewCell: UITableViewCell {
     
     open func set(theme: SVNTheme){
         self.theme = theme
-        
     }
 }
