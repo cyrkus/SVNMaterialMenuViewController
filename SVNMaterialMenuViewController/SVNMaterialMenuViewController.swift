@@ -18,12 +18,12 @@ open class SVNMaterialMenuViewController: UITableViewController {
     public var selectedItem: ((Int) -> Void)?
     
     public init(theme: SVNTheme?,
-                dataSource:[SVNMaterialMenuCell]?,
+                dataSource:[SVNMaterialMenuCell],
                 nibName nibNameOrNil: String?,
                 bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.theme = theme == nil ? SVNTheme_DefaultDark() : theme!
-        self.dataSource = dataSource == nil ? self.setStockData() : dataSource!
+        self.dataSource = dataSource
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -44,14 +44,6 @@ open class SVNMaterialMenuViewController: UITableViewController {
         self.tableView.backgroundColor = self.theme.backgroundColor
         self.tableView.separatorColor = UIColor.clear
     }
-    
-    private func setStockData() -> [SVNMaterialMenuCell] {
-        let camera = SVNMaterialMenuCell(backgroundColor: self.theme.primaryDialogColor, icon: UIImage(named: stockImages.camera)!, title: "Take A Picture")
-        let document = SVNMaterialMenuCell(backgroundColor: self.theme.secondaryDialogColor, icon: UIImage(named:stockImages.document)!, title: "Write A Review")
-        let location = SVNMaterialMenuCell(backgroundColor: self.theme.tertiaryDialogColor, icon: UIImage(named:stockImages.compass)!, title: "Share Your Location")
-        return [camera, document, location]
-    }
-    
 }
 
 extension SVNMaterialMenuViewController {

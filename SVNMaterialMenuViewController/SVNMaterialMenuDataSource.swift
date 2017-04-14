@@ -19,9 +19,3 @@ public struct SVNMaterialMenuCell: SVNMaterialMenuDataSource {
     public var icon: UIImage
     public var title: String
 }
-
-internal struct stockImages {
-    static let compass: String = "COMPASS"
-    static let document: String = "Document"
-    static let camera: String = "CAMERA"
-}
