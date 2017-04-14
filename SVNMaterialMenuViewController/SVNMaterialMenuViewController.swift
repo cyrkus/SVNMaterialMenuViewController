@@ -9,16 +9,27 @@
 import UIKit
 import SVNTheme
 
+public protocol SVNMaterialMenuViewControllerDelegate: class {
+    func MaterialMenuVCSelectedItem(at row: Int)
+}
+
 open class SVNMaterialMenuViewController: UITableViewController {
     
     public var theme: SVNTheme!
     
     public var dataSource: [SVNMaterialMenuCell]!
     
-    public init(theme: SVNTheme?, dataSource:[SVNMaterialMenuCell]?, nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    public var menuDelegate: SVNMaterialMenuViewControllerDelegate!
+    
+    public init(theme: SVNTheme?,
+                dataSource:[SVNMaterialMenuCell]?,
+                delegate: SVNMaterialMenuViewControllerDelegate,
+                nibName nibNameOrNil: String?,
+                bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.theme = theme == nil ? SVNTheme_DefaultDark() : theme!
         self.dataSource = dataSource == nil ? self.setStockData() : dataSource!
+        self.menuDelegate = delegate
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -46,6 +57,7 @@ open class SVNMaterialMenuViewController: UITableViewController {
         let location = SVNMaterialMenuCell(backgroundColor: self.theme.tertiaryDialogColor, icon: UIImage(named:stockImages.compass)!, title: "Share Your Location")
         return [camera, document, location]
     }
+    
 }
 
 extension SVNMaterialMenuViewController {
@@ -68,6 +80,10 @@ extension SVNMaterialMenuViewController {
     
     open override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.view.bounds.height / 4
+    }
+    
+    open override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.menuDelegate.MaterialMenuVCSelectedItem(at: indexPath.row)
     }
 }
 
