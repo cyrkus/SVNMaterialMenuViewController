@@ -60,13 +60,21 @@ open class SVNMaterialMenuTableViewCell: UITableViewCell {
     
     private func animate(_ isSelected: Bool) {
         CATransaction.begin()
-        let animation = CABasicAnimation(keyPath: "shadowOpacity")
-        animation.toValue = isSelected ? 0.0 : 0.5
-        animation.duration = 2.5
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        animation.fillMode = kCAFillModeBoth
-        animation.isRemovedOnCompletion = false
-        self.layer.add(animation, forKey: animation.keyPath!)
+        let opacity = CABasicAnimation(keyPath: "shadowOpacity")
+        opacity.toValue = isSelected ? 0.0 : 0.5
+        opacity.duration = 2.5
+        opacity.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        opacity.fillMode = kCAFillModeBoth
+        opacity.isRemovedOnCompletion = false
+        
+        let  offset = CABasicAnimation(keyPath: "shadowOffset")
+        offset.toValue = isSelected ? CGSize.zero : CGSize(width: -2, height: 2)
+        offset.duration = opacity.duration
+        offset.timingFunction = opacity.timingFunction
+        offset.isRemovedOnCompletion = opacity.isRemovedOnCompletion
+        
+        self.layer.add(offset, forKey: offset.keyPath!)
+        self.layer.add(opacity, forKey: opacity.keyPath!)
         CATransaction.commit()
     }
     
