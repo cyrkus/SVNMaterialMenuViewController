@@ -9,21 +9,16 @@
 import UIKit
 import SVNTheme
 
-public protocol SVNMaterialMenuViewControllerDelegate: class {
-    func MaterialMenuVCSelectedItem(at row: Int)
-}
-
 open class SVNMaterialMenuViewController: UITableViewController {
     
     public var theme: SVNTheme!
     
     public var dataSource: [SVNMaterialMenuCell]!
     
-    public var menuDelegate: SVNMaterialMenuViewControllerDelegate!
+    public var selectedItem: ((Int) -> Void)
     
     public init(theme: SVNTheme?,
                 dataSource:[SVNMaterialMenuCell]?,
-                delegate: SVNMaterialMenuViewControllerDelegate,
                 nibName nibNameOrNil: String?,
                 bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -83,7 +78,7 @@ extension SVNMaterialMenuViewController {
     }
     
     open override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.menuDelegate.MaterialMenuVCSelectedItem(at: indexPath.row)
+        self.selectedItem(indexPath.row)
     }
 }
 
