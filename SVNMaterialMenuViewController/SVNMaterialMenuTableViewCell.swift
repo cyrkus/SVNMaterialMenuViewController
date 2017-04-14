@@ -11,15 +11,15 @@ import SVNTheme
 
 open class SVNMaterialMenuTableViewCell: UITableViewCell {
     
-//    override open var isHighlighted: Bool {
-//        get {
-//            return super.isHighlighted
-//        }
-//        set(newValue){
-//            super.isHighlighted = newValue
-//        }
-//    }
-//    
+    //    override open var isHighlighted: Bool {
+    //        get {
+    //            return super.isHighlighted
+    //        }
+    //        set(newValue){
+    //            super.isHighlighted = newValue
+    //        }
+    //    }
+    //
     class var reuseIdentifier: String {
         get {
             return "SVNMaterialMenuTableViewCell"
@@ -66,7 +66,7 @@ open class SVNMaterialMenuTableViewCell: UITableViewCell {
         CATransaction.begin()
         let opacity = CABasicAnimation(keyPath: "shadowOpacity")
         opacity.toValue = isSelected ? 0.0 : 0.5
-        opacity.duration = 2.5
+        opacity.duration = 1.0
         opacity.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         opacity.fillMode = kCAFillModeBoth
         opacity.isRemovedOnCompletion = false
@@ -77,8 +77,8 @@ open class SVNMaterialMenuTableViewCell: UITableViewCell {
         offset.timingFunction = opacity.timingFunction
         offset.isRemovedOnCompletion = opacity.isRemovedOnCompletion
         
-        self.layer.add(offset, forKey: offset.keyPath!)
-        self.layer.add(opacity, forKey: opacity.keyPath!)
+        self.contentCard.layer.add(offset, forKey: offset.keyPath!)
+        self.contentCard.layer.add(opacity, forKey: opacity.keyPath!)
         CATransaction.commit()
     }
     
