@@ -66,7 +66,7 @@ open class SVNMaterialMenuTableViewCell: UITableViewCell {
         CATransaction.begin()
         let opacity = CABasicAnimation(keyPath: "shadowOpacity")
         opacity.toValue = isSelected ? 0.0 : 0.5
-        opacity.duration = 1.0
+        opacity.duration = 0.5
         opacity.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         opacity.fillMode = kCAFillModeBoth
         opacity.isRemovedOnCompletion = false
