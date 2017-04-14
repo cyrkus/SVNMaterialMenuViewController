@@ -18,4 +18,10 @@ public struct SVNMaterialMenuCell: SVNMaterialMenuDataSource {
     public var backgroundColor: UIColor
     public var icon: UIImage
     public var title: String
+    
+    public init(backgroundColor: UIColor, icon: UIImage, title: String){
+        self.backgroundColor = backgroundColor
+        self.icon = icon
+        self.title = title
+    }
 }
