@@ -1,7 +1,6 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 # SVNMaterialMenuViewController
-A tableViewController with
 <p align="center">
   <img src="/images/Earn Menu Copy.png" alt="SVNMaterialButton"/>
 </p>
@@ -13,9 +12,10 @@ Create the dataSource:
 
 Or use the default:
 
-  SVNMaterialMenuCell()
+    SVNMaterialMenuCell()
 
 Call:
+
     init(theme:, dataSource:, nibNameOrNil:, nibBundleOrNil:)
 
 To process selection of cells, equate a method in the presenting class to:
