@@ -1,6 +1,8 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 # SVNMaterialMenuViewController
+A fullscreen tableViewController with large cells
+
 <p align="center">
   <img src="/images/Earn Menu Copy.png" alt="SVNMaterialButton"/>
 </p>
